@@ -1,3 +1,4 @@
+#pragma once
 #include "Pistol.h"
 #include "Shotgun.h"
 #include <iostream>
