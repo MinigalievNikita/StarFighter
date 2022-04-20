@@ -1,3 +1,4 @@
+#pragma once
 #include <SFML\Graphics.hpp>
 #include <math.h>
 #include <iostream>
@@ -11,5 +12,5 @@ public:
 	float velocity;
 	sf::Vector2f ro;
 	int heath;
-	int size;
+	float size;
 };
