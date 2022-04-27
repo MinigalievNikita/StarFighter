@@ -1,4 +1,3 @@
-#pragma once
 #include "Pistol.h"
 #include "Shotgun.h"
 #include <iostream>
@@ -8,10 +7,14 @@
 #include <SFML/Audio.hpp>
 #include "Bullet.h"
 #include "Scene.h"
+#include "Object.h"
+#include "Hero.h"
 
 
 int main(int argc, const char * argv[]) {
-    Scene scene(1920, 1080);
+    Objects structures(1); // создание объектов на карте
+    
+    Scene scene(structures.width, structures.height); // создание экрана
     scene.setFramerateLimit(60);
 //    scene.initializeTexture();
     
@@ -27,11 +30,22 @@ int main(int argc, const char * argv[]) {
     if(!heroTexture.loadFromFile("SpaceFighter.png")){
         cout << "Cant load hero";
     }
+    
+    Hero hero(5, 50);
+    hero.radius = 128;
+    hero.setOrigin(hero.radius, hero.radius);
+    hero.velocity = 1;
+    hero.setTexture(heroTexture);
+    hero.setScale(1, 1);
+    hero.setPosition(500, 500);
+    cout<<heroTexture.getSize().y << "Fffffffffff"<<std::endl;
     sf::Sprite circle(heroTexture);
     circle.setScale(0.5f, 0.5f);
-    
-    //Map map(1); создание карты
-    //Hero hero(...); создание героя класс героя наследуется от sf::Sprite
+//    sf::CircleShape square(200, 4);
+//    square.setOrigin(200, 200);
+//    square.setPosition(structures.obj[0].x, structures.obj[0].y);
+//    square.setFillColor(sf::Color::Red);
+//    square.setRotation(45);
     
     sf::Clock clock;
     
@@ -45,9 +59,10 @@ int main(int argc, const char * argv[]) {
         scene.clear();
         
         
-        scene.handleEvents(hero, scene);
+        scene.handleEvents(hero, sf::Mouse::getPosition(scene));
         scene.draw(background);
-        scene.draw(circle);
+        scene.draw(structures.obj[0]);
+        scene.draw(hero);
         scene.display();
     }
     return 0;

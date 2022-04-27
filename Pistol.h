@@ -6,13 +6,13 @@
 
 class Pistol : public Weapon{
 public :
-    Bullet shoot(Hero& hero, sf::Vector2i mousePosition) {
+    Bullet shoot(sf::Vector2f position, sf::Vector2i mousePosition) {
         cout << "Im shooting pistol";
         Bullet newBullet;
         newBullet.it = 0;
         newBullet.velocity = 5;
-        newBullet.r0 = hero.getPosition();
-        newBullet.direction = hero.getPosition();
+        newBullet.r0 = position;
+        newBullet.direction = position;
         newBullet.direction = sf::Vector2f(mousePosition.x, mousePosition.y) - newBullet.r0;
         newBullet.direction = sf::Vector2f(newBullet.direction.x / (sqrt (newBullet.direction.x * newBullet.direction.x + newBullet.direction.y * newBullet.direction.y)), newBullet.direction.y / (sqrt (newBullet.direction.x * newBullet.direction.x + newBullet.direction.y * newBullet.direction.y)));
         return newBullet;
