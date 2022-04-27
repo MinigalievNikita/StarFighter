@@ -1,0 +1,27 @@
+       for (size_t i = 0; i < Objects.obj.size(); ++i)
+        {
+            if ((abs(hero.getPosition().y - Objects.obj[i].getPosition().y) < Objects.sizeObj + hero.radius + 0.1) &
+                (abs(hero.getPosition().x - Objects.obj[i].getPosition().x) < Objects.sizeObj + hero.radius + 0.1) )
+            {
+                if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
+                {
+                    if (hero.getPosition().y < Objects.obj[i].getPosition().y)
+                        hero.move(0, -hero.velocity);
+                }
+                else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
+                {
+                    if (hero.getPosition().y > Objects.obj[i].getPosition().y)
+                        hero.move(0, hero.velocity);
+                }
+                else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+                {
+                    if (hero.getPosition().x < Objects.obj[i].getPosition().x)
+                        hero.move(-hero.velocity, 0);
+                }
+                else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+                {
+                    if (hero.getPosition().y > Objects.obj[i].getPosition().x)
+                        hero.move(hero.velocity, 0);
+                }
+            }
+        }
