@@ -1,27 +1,49 @@
-       for (size_t i = 0; i < Objects.obj.size(); ++i)
+
+    int handleBarier(Hero& hero, Objects& objects)
+    {
+        for (size_t i = 0; i < Objects.obj.size(); ++i)
         {
             if ((abs(hero.getPosition().y - Objects.obj[i].getPosition().y) < Objects.sizeObj + hero.radius + 0.1) &
-                (abs(hero.getPosition().x - Objects.obj[i].getPosition().x) < Objects.sizeObj + hero.radius + 0.1) )
+                (abs(hero.getPosition().x - Objects.obj[i].getPosition().x) < Objects.sizeObj + hero.radius + 0.1))
             {
-                if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
-                {
-                    if (hero.getPosition().y < Objects.obj[i].getPosition().y)
-                        hero.move(0, -hero.velocity);
-                }
-                else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
-                {
-                    if (hero.getPosition().y > Objects.obj[i].getPosition().y)
-                        hero.move(0, hero.velocity);
-                }
-                else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
-                {
-                    if (hero.getPosition().x < Objects.obj[i].getPosition().x)
-                        hero.move(-hero.velocity, 0);
-                }
-                else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
-                {
-                    if (hero.getPosition().y > Objects.obj[i].getPosition().x)
-                        hero.move(hero.velocity, 0);
-                }
+                return i;
             }
+        }
+
+        return -1;
+    }
+
+    void handleEvents(Hero& hero, sf::Vector2i mousePosition, Objects& objects)
+    {
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+        {
+            if ((hero.getPosition().x > hero.velocity + 0.1 + hero.radius) && (handleBarier(hero, objects) >= 0))
+                hero.move(-hero.velocity, 0);
+
+            if (hero.getPosition().y > Objects.obj[i].getPosition().x)
+                hero.move(hero.velocity, 0);
+        }
+        else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+        {
+            if (hero.getPosition().x < width - hero.velocity - 0.1 - hero.radius)
+                hero.move(hero.velocity, 0);
+
+            if (hero.getPosition().x < Objects.obj[i].getPosition().x)
+                hero.move(-hero.velocity, 0);
+        }
+        else if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
+        {
+            if (hero.getPosition().y > hero.velocity + 0.1 + hero.radius)
+                hero.move(0, -hero.velocity);
+
+            if (hero.getPosition().y < Objects.obj[i].getPosition().y)
+                hero.move(0, -hero.velocity);
+        }
+        else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
+        {
+            if (hero.getPosition().y < height - hero.velocity - 0.1 - hero.radius)
+                hero.move(0, hero.velocity);
+
+            if (hero.getPosition().y > Objects.obj[i].getPosition().y)
+                hero.move(0, hero.velocity);
         }
