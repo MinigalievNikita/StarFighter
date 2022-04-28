@@ -6,11 +6,14 @@
 
 class Pistol : public Weapon{
 public :
+    float delayShoot = 200; //mili sec
+    float timeLastShoot = 0;
     Bullet shoot(sf::Vector2f position, sf::Vector2i mousePosition) {
         cout << "Im shooting pistol";
         Bullet newBullet;
         newBullet.it = 0;
-        newBullet.velocity = 5;
+        newBullet.size = 100;
+        newBullet.velocity = 10;
         newBullet.r0 = position;
         newBullet.direction = position;
         newBullet.direction = sf::Vector2f(mousePosition.x, mousePosition.y) - newBullet.r0;
@@ -21,3 +24,4 @@ public :
         cout<<"Iam reloadin pistol";
     }
 };
+

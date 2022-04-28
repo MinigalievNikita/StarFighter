@@ -4,9 +4,11 @@
 class Enemy : public Character
 {
 public:
-	Enemy(int velocity, int heath)
-	{
-		this->velocity = velocity;
-		this->heath = heath;
-	}
+    static float spawnPeriod; //10 sec
+    static float lastSpawnTime;
+    Enemy(int velocity, int heath)
+    {
+        this->velocity = velocity;
+        this->heath = heath;
+    }
 };

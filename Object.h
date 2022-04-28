@@ -11,7 +11,7 @@ struct Objects
 //    std::map <std::string, sf::Vector2f>;
     int width;
     int height;
-    int sizeObj = 30;
+    int sizeObj = 200;
 
     Objects(int i)
     {
@@ -20,8 +20,8 @@ struct Objects
             this->width  = 1920;
             this->height = 1080;
             
-            sf::CircleShape square(200, 4);
-            square.setOrigin(200, 200);
+            sf::CircleShape square(sizeObj, 4);
+            square.setOrigin(sizeObj, sizeObj);
             square.setPosition(width / 2, height / 2);
             square.setFillColor(sf::Color::Blue);
             square.setRotation(45);
