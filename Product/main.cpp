@@ -13,7 +13,7 @@
 #include <unistd.h>
 
 int Enemy::positionIt = 0;
-float Enemy::spawnPeriod = 1; //in sec
+float Enemy::spawnPeriod = 10; //in sec
 float Enemy::lastSpawnTime = 0;
 int Enemy::count = 0;
 const float timeOfUpdateFrame = 5; //in millisec
