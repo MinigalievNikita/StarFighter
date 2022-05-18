@@ -12,7 +12,7 @@ public:
     vector<Bullet> Bullets;
     int it;
     float prewTimeShoot = 0;
-    bool dawn = true;
+    bool down = true;
 
     Enemy(int velocity, int heath)
     {
@@ -60,13 +60,13 @@ Enemy createEnemy(Map structeres, int iterator) {
 
 Enemy& moveEnemy(Enemy& enemy, Map structures)
 {
-    if ((enemy.getPosition().y < structures.height * 1 / 3) && (enemy.dawn == true))
+    if ((enemy.getPosition().y < structures.height * 1 / 3) && (enemy.down == true))
     {
         enemy.move(0, enemy.velocity);
     }
     else
     {
-        enemy.dawn = false;
+        enemy.down = false;
 
         if (enemy.getPosition().y > 2 * enemy.radius)
         {
@@ -74,7 +74,7 @@ Enemy& moveEnemy(Enemy& enemy, Map structures)
         }
         else
         {
-            enemy.dawn = true;
+            enemy.down = true;
         }
     }
 
