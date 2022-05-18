@@ -123,7 +123,8 @@ struct Scene : public sf::RenderWindow {
                     draw(counterWayBullet(enemies[l].Bullets[k]));
                 }
             }
-                draw(enemies[l]);
+            moveEnemy(enemies[l], structers);
+            draw(enemies[l]);
         }
 
         // drawing bullets
